@@ -3,14 +3,15 @@ const fs = require("fs");
 
 const makeDailyCommit = () => {
   try {
-    // Change directory to the Git repository
-    const repoPath = "/volume3/homes/Kanemiller/daily-commits-home";
+    // Current directory is used by default in GitHub Actions
+    const repoPath = process.env.GITHUB_WORKSPACE || process.cwd();
     process.chdir(repoPath);
 
-    // Ensure we're on the main branch and reset any changes
-    execSync("git checkout main");
-    execSync("git fetch origin main");
-    execSync("git reset --hard origin/main");  // Overwrites local changes with the remote
+    // Ensure we're on the main branch
+    // (GITHUB ACTIONS handles checkout automagically, but this keeps local usage safe)
+    execSync("git checkout main", { stdio: 'inherit' });
+    execSync("git fetch origin main", { stdio: 'inherit' });
+    execSync("git reset --hard origin/main", { stdio: 'inherit' });
 
     // Create a unique message with today's date and time
     const date = new Date().toISOString();
