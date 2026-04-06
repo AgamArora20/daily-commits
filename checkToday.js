@@ -2,6 +2,10 @@ const { execSync } = require("child_process");
 
 const checkToday = () => {
   try {
+    // Navigate to the script's directory (Desktop/Daily github automatic commit)
+    process.chdir(__dirname);
+
+    console.log(`Checking repository at: ${process.cwd()}`);
     console.log("Fetching latest from origin...");
     execSync("git fetch origin main");
 
