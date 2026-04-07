@@ -2,7 +2,8 @@ name: Daily Commit Automation
 
 on:
   schedule:
-    - cron: "30 18 * * *" # Runs every day at 18:30 UTC (00:00 IST)
+    - cron: "0 7 * * *" # Runs every day at 07:00 UTC (12:30 IST) - Recommended for same-day attribution
+    - cron: "0 19 * * *" # Redundant run to ensure coverage
   workflow_dispatch: # Allows manual trigger for testing
 
 jobs:
