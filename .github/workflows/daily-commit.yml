@@ -2,8 +2,8 @@ name: Daily Commit Automation
 
 on:
   schedule:
-    - cron: "0 7 * * *" # Runs every day at 07:00 UTC (12:30 IST) - Recommended for same-day attribution
-    - cron: "0 19 * * *" # Redundant run to ensure coverage
+    - cron: "0 1 * * *" # Runs every day at 01:00 UTC (06:30 IST) - Best for GitHub streak attribution
+    - cron: "0 13 * * *" # Backup run 12 hours later
   workflow_dispatch: # Allows manual trigger for testing
 
 jobs:
